@@ -1,0 +1,668 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="RobotIDE" /> 
+<meta name="rf-template" content="False" /> 
+<style type="text/css">
+html {
+  font-family: Arial,Helvetica,sans-serif;
+  background-color: white;
+  color: black;
+}
+table {
+  border-collapse: collapse;
+  empty-cells: show;
+  margin: 1em 0em;
+  border: 0.1em solid black;
+}
+th, td {
+  border-style: solid;
+  border-width: 0.05em 0.1em;
+  border-color: black;
+  padding: 0.1em 0.2em;
+  height: 1.5em;
+  width: 12em;
+}
+th {
+  background-color: rgb(192, 192, 192);
+  color: black;
+  border-width: 0.1em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.1em;
+}
+td.name {
+  background-color: rgb(240, 240, 240);
+  letter-spacing: 0.1em;
+}
+td.name, th.name {
+  width: 10em;
+}
+</style>
+<title>Calculator Test Cases</title>
+</head>
+<body>
+<h1>Calculator Test Cases</h1>
+<table id="settings" border="1">
+<tr>
+<th class="name">Setting</th>
+<th colspan="4">Value</th>
+</tr>
+<tr>
+<td class="name">Documentation</td>
+<td colspan="4">Tests the AutoItLibrary by using various AutoIt keywords on the GUI of the Windows Calculator application.</td>
+</tr>
+<tr>
+<td class="name">Suite Setup</td>
+<td>Start Calculator</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Suite Teardown</td>
+<td>Stop Calculator</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Test Setup</td>
+<td>Clear Calculator</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>AutoItLibrary</td>
+<td>${OUTPUTDIR}</td>
+<td>10</td>
+<td>${True}</td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>Collections</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Library</td>
+<td>String</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name">Variables</td>
+<td>CalculatorGUIMap.py</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="variables" border="1"></table>
+<table id="testcases" border="1">
+<tr>
+<th class="name">Test Case</th>
+<th>Action</th>
+<th colspan="3">Arguments</th>
+</tr>
+<tr>
+<td class="name"><a name="test_Integer Addition">Integer Addition</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get "The Answer" by addition.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>4 1 + 1 =</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Control Get Text</td>
+<td>Calculator</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Edit1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Numbers</td>
+<td>${Ans}</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Integer Subtraction">Integer Subtraction</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get "The Answer" by subtraction.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>4 5 - 3 =</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Control Get Text</td>
+<td>Calculator</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Edit1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Numbers</td>
+<td>${Ans}</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Integer Multiplication">Integer Multiplication</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get "The Answer" by multiplication.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>6 * 7 =</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Control Get Text</td>
+<td>Calculator</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Edit1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Numbers</td>
+<td>${Ans}</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Integer Division">Integer Division</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get "The Answer" by division.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>5 4 6 / 1 3 =</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Control Get Text</td>
+<td>Calculator</td>
+<td>${EMPTY}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Edit1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Numbers</td>
+<td>${Ans}</td>
+<td>42.</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Hex Addition">Hex Addition</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Test Hex addition.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>Hex Dword</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>DE01F100{+}ABCDEF=</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>DEAD BEEF</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!EC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Clip Get</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Strings</td>
+<td>${Ans}</td>
+<td>DEADBEEF</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Hex Subtraction">Hex Subtraction</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Test Hex subtraction.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>Hex Dword</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Clip Put</td>
+<td>DF598CDE</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!EP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>-</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Clip Put</td>
+<td>ABCDEF</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!EP</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>=</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>DEAD BEEF</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!EC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Ans} =</td>
+<td>Clip Get</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Should Be Equal As Strings</td>
+<td>${Ans}</td>
+<td>DEADBEEF</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="test_Test Screen Capture On FAIL">Test Screen Capture On FAIL</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Test that a screenshot is taken and included in the report file when an AutoItLibrary keyword fails.\n<br />
+This test will always fail.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Tags]</td>
+<td>ExpectedFAIL</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>Hex Dword</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>DE01F100{+}ABCDEF=</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait</td>
+<td>Calculator</td>
+<td>DEAD BEAT</td>
+<td>3</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+<table id="keywords" border="1">
+<tr>
+<th class="name">Keyword</th>
+<th>Action</th>
+<th colspan="3">Arguments</th>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Clear Calculator">Clear Calculator</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Click the Clear button in the Windows Calculator</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Activate</td>
+<td>Calculator</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Button</td>
+<td>Clear</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Start Calculator">Start Calculator</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Start the Windows Calculator application.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run</td>
+<td>calc.exe</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait For Active Window</td>
+<td>Calculator</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!VS</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Wait For Active Window</td>
+<td>Calculator</td>
+<td>Hyp</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Stop Calculator">Stop Calculator</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Shut down the Windows Calculator application.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Activate</td>
+<td>Calculator</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>!{F4}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Button">Click Button</a></td>
+<td>[Arguments]</td>
+<td>${ButtonText}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td colspan="3">Click a button by its text name, using the Calculator GUI Map.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${ButtonName} =</td>
+<td>Get From Dictionary</td>
+<td>${GUIMAP}</td>
+<td>${ButtonText}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Control Click</td>
+<td>Calculator</td>
+<td>${EMPTY}</td>
+<td>${ButtonName}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Click Buttons">Click Buttons</a></td>
+<td>[Arguments]</td>
+<td>${ButtonNames}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Documentation]</td>
+<td colspan="3">Click a sequence of buttons by their text names, using the Calculator GUI Map.\n<br />
+ Button text names should be separated by white space.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>@{Buttons} =</td>
+<td>Split String</td>
+<td>${ButtonNames}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>:: FOR</td>
+<td>${ButtonName}</td>
+<td>IN</td>
+<td>@{Buttons}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td>Click Button</td>
+<td>${ButtonName}</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,767 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>AutoItLibrary - Documentation</title>
+<style>
+
+  body {
+    background: white;
+    color: black;
+  }
+
+  /* Generic Table Styles */
+  table {
+    background: white;
+    border: 1px solid black;
+    border-collapse: collapse;
+    empty-cells: show;
+    margin: 0.3em 0em;
+  }
+  th, td {
+    border: 1px solid black;
+    padding: 0.2em;
+  }
+  th {
+    background: #C6C6C6;
+  }
+  td {
+    vertical-align: top;
+  }    
+
+  /* Columns */
+  td.kw {
+    font-weight: bold;
+  }
+  td.arg {
+    width: 300px;
+    font-style: italic;
+  }
+  td.doc {
+  }
+
+  /* Tables in documentation */
+  table.doc {
+    border: 1px solid gray;
+    background: transparent;
+    border-collapse: collapse;
+    empty-cells: show;
+    font-size: 0.85em;
+    font-family: arial,helvetica,sans-serif;
+  }
+  table.doc td {
+    border: 1px solid gray;
+    padding: 0.1em 0.3em;
+    height: 1.2em;
+  }
+
+  /* Paragraphs */
+  .libdoc, .links {
+    width: 800px;
+  }
+
+  /* Misc */
+  a.name, span.name {  
+    font-style: italic;
+    background: #f4f4f4;
+    text-decoration: none;
+  }
+  a:link, a:visited {
+    color: blue;
+  }
+  a:hover, a:active {
+    text-decoration: underline;
+    color: purple;
+  }
+  .footer {
+    font-size: 0.9em;
+  }
+</style>
+</head>
+<body>
+<h1>AutoItLibrary - Documentation</h1>
+
+<h2 id="introduction">Introduction</h2>
+<p class='libdoc'><b>AutoItLibrary</b> is a Robot Framework keyword library wrapper for for the freeware <b>AutoIt</b> tool (<a href="http://www.autoitscript.com/autoit3/index.shtml">http://www.autoitscript.com/autoit3/index.shtml</a>) using AutoIt's <b>AutoItX.dll</b> COM object. The <b>AutoItLibrary</b> class provides a proxy for the AutoIt keywords callable on the AutoIt COM object and provides additional high-level keywords implemented as methods in this class.<br />
+<br />
+In the following documentation on each keyword, the keywords whose documentation is simply <i>method &lt;KeywordName&gt;</i> (e.g. "<i>method ControlClick</i>") are the native AutoIt keywords. &nbsp;The detailed documentation for these keywords is available in the AutoItX documentation file: <b>AutoItX.chm</b>. &nbsp;This file is installed as part of the installation of <b>AutoItLibrary</b> as:<br />
+<br />
+C:\RobotFramework\Extensions\AutoItLibrary\AutoItX.chm<br />
+<br />
+In order to discover the control identifiers in a given Windows GUI, AutoIt provides a standalone tool called the AutoIt Window Info Tool which is installed as part of the installation of <b>AutoItLibrary</b> as:<br />
+<br />
+C:\RobotFramework\Extensions\AutoItLibrary\Au3Info.exe<br />
+<br />
+This tool is documented here: <a href="http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm">http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm</a></p>
+
+<h2 id="importing">Importing</h2>
+<table class="keywords">
+<tr>
+  <th class="arg">Arguments</th>
+  <th class="doc">Documentation</th>
+</tr>
+<tr>
+  <td class="arg">OutputDir=., TimeOut=60, CaptureScreenOnError=False</td>
+  <td class="doc"><table border="1" class="doc">
+<tr>
+<td>OutputDir=&lt;path&gt;</td>
+<td>Output directory for captured screenshots. Should set to <i>${OUTPUTDIR}</i></td>
+</tr>
+<tr>
+<td>Timeout=&lt;seconds&gt;</td>
+<td>Default TimeOut value in seconds.</td>
+</tr>
+<tr>
+<td></td>
+<td>This is used in other methods when their TimeOut parameter is not used.</td>
+</tr>
+<tr>
+<td>CaptureScreenOnError=True</td>
+<td>Defaults to False. &nbsp;Set to <i>${True}</i> to capture the PC screen on any</td>
+</tr>
+<tr>
+<td></td>
+<td>AutoItLibrary keyword failure.</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<h2>Shortcuts</h2>
+<div class='links'>
+<a href="#Auto It Set Option" title="method AutoItSetOption">Auto&nbsp;It&nbsp;Set&nbsp;Option</a>&nbsp;
+<a href="#Block Input" title="method BlockInput">Block&nbsp;Input</a>&nbsp;
+<a href="#CD Tray" title="method CDTray">CD&nbsp;Tray</a>&nbsp;
+<a href="#Clip Get" title="method ClipGet">Clip&nbsp;Get</a>&nbsp;
+<a href="#Clip Put" title="method ClipPut">Clip&nbsp;Put</a>&nbsp;
+<a href="#Control Click" title="method ControlClick">Control&nbsp;Click</a>&nbsp;
+<a href="#Control Command" title="method ControlCommand">Control&nbsp;Command</a>&nbsp;
+<a href="#Control Disable" title="method ControlDisable">Control&nbsp;Disable</a>&nbsp;
+<a href="#Control Enable" title="method ControlEnable">Control&nbsp;Enable</a>&nbsp;
+<a href="#Control Focus" title="method ControlFocus">Control&nbsp;Focus</a>&nbsp;
+<a href="#Control Get Focus" title="method ControlGetFocus">Control&nbsp;Get&nbsp;Focus</a>&nbsp;
+<a href="#Control Get Handle" title="method ControlGetHandle">Control&nbsp;Get&nbsp;Handle</a>&nbsp;
+<a href="#Control Get Pos Height" title="method ControlGetPosHeight">Control&nbsp;Get&nbsp;Pos&nbsp;Height</a>&nbsp;
+<a href="#Control Get Pos Width" title="method ControlGetPosWidth">Control&nbsp;Get&nbsp;Pos&nbsp;Width</a>&nbsp;
+<a href="#Control Get Pos X" title="method ControlGetPosX">Control&nbsp;Get&nbsp;Pos&nbsp;X</a>&nbsp;
+<a href="#Control Get Pos Y" title="method ControlGetPosY">Control&nbsp;Get&nbsp;Pos&nbsp;Y</a>&nbsp;
+<a href="#Control Get Text" title="method ControlGetText">Control&nbsp;Get&nbsp;Text</a>&nbsp;
+<a href="#Control Hide" title="method ControlHide">Control&nbsp;Hide</a>&nbsp;
+<a href="#Control List View" title="method ControlListView">Control&nbsp;List&nbsp;View</a>&nbsp;
+<a href="#Control Move" title="method ControlMove">Control&nbsp;Move</a>&nbsp;
+<a href="#Control Send" title="method ControlSend">Control&nbsp;Send</a>&nbsp;
+<a href="#Control Set Text" title="method ControlSetText">Control&nbsp;Set&nbsp;Text</a>&nbsp;
+<a href="#Control Show" title="method ControlShow">Control&nbsp;Show</a>&nbsp;
+<a href="#Control Tree View" title="method ControlTreeView">Control&nbsp;Tree&nbsp;View</a>&nbsp;
+<a href="#Drive Map Add" title="method DriveMapAdd">Drive&nbsp;Map&nbsp;Add</a>&nbsp;
+<a href="#Drive Map Del" title="method DriveMapDel">Drive&nbsp;Map&nbsp;Del</a>&nbsp;
+<a href="#Drive Map Get" title="method DriveMapGet">Drive&nbsp;Map&nbsp;Get</a>&nbsp;
+<a href="#Get Active Window Image" title="Capture an image of the active window into the given _FilePath_.">Get&nbsp;Active&nbsp;Window&nbsp;Image</a>&nbsp;
+<a href="#Get Auto It Version" title="Returns a string with the version of the AutoItX COM object.">Get&nbsp;Auto&nbsp;It&nbsp;Version</a>&nbsp;
+<a href="#Get Screen Image" title="Capture a full screen image into the given _FilePath_.">Get&nbsp;Screen&nbsp;Image</a>&nbsp;
+<a href="#Get Version" title="Returns a string with the version of the AutoItLibrary.">Get&nbsp;Version</a>&nbsp;
+<a href="#Ini Delete" title="method IniDelete">Ini&nbsp;Delete</a>&nbsp;
+<a href="#Ini Read" title="method IniRead">Ini&nbsp;Read</a>&nbsp;
+<a href="#Ini Write" title="method IniWrite">Ini&nbsp;Write</a>&nbsp;
+<a href="#Init" title="method Init">Init</a>&nbsp;
+<a href="#Is Admin" title="method IsAdmin">Is&nbsp;Admin</a>&nbsp;
+<a href="#Mouse Click" title="method MouseClick">Mouse&nbsp;Click</a>&nbsp;
+<a href="#Mouse Click Drag" title="method MouseClickDrag">Mouse&nbsp;Click&nbsp;Drag</a>&nbsp;
+<a href="#Mouse Down" title="method MouseDown">Mouse&nbsp;Down</a>&nbsp;
+<a href="#Mouse Get Cursor" title="method MouseGetCursor">Mouse&nbsp;Get&nbsp;Cursor</a>&nbsp;
+<a href="#Mouse Get Pos X" title="method MouseGetPosX">Mouse&nbsp;Get&nbsp;Pos&nbsp;X</a>&nbsp;
+<a href="#Mouse Get Pos Y" title="method MouseGetPosY">Mouse&nbsp;Get&nbsp;Pos&nbsp;Y</a>&nbsp;
+<a href="#Mouse Move" title="method MouseMove">Mouse&nbsp;Move</a>&nbsp;
+<a href="#Mouse Up" title="method MouseUp">Mouse&nbsp;Up</a>&nbsp;
+<a href="#Mouse Wheel" title="method MouseWheel">Mouse&nbsp;Wheel</a>&nbsp;
+<a href="#Opt" title="method Opt">Opt</a>&nbsp;
+<a href="#Pixel Checksum" title="method PixelChecksum">Pixel&nbsp;Checksum</a>&nbsp;
+<a href="#Pixel Get Color" title="method PixelGetColor">Pixel&nbsp;Get&nbsp;Color</a>&nbsp;
+<a href="#Pixel Search" title="method PixelSearch">Pixel&nbsp;Search</a>&nbsp;
+<a href="#Process Close" title="method ProcessClose">Process&nbsp;Close</a>&nbsp;
+<a href="#Process Exists" title="method ProcessExists">Process&nbsp;Exists</a>&nbsp;
+<a href="#Process Set Priority" title="method ProcessSetPriority">Process&nbsp;Set&nbsp;Priority</a>&nbsp;
+<a href="#Process Wait" title="method ProcessWait">Process&nbsp;Wait</a>&nbsp;
+<a href="#Process Wait Close" title="method ProcessWaitClose">Process&nbsp;Wait&nbsp;Close</a>&nbsp;
+<a href="#Reg Delete Key" title="method RegDeleteKey">Reg&nbsp;Delete&nbsp;Key</a>&nbsp;
+<a href="#Reg Delete Val" title="method RegDeleteVal">Reg&nbsp;Delete&nbsp;Val</a>&nbsp;
+<a href="#Reg Enum Key" title="method RegEnumKey">Reg&nbsp;Enum&nbsp;Key</a>&nbsp;
+<a href="#Reg Enum Val" title="method RegEnumVal">Reg&nbsp;Enum&nbsp;Val</a>&nbsp;
+<a href="#Reg Read" title="method RegRead">Reg&nbsp;Read</a>&nbsp;
+<a href="#Reg Write" title="method RegWrite">Reg&nbsp;Write</a>&nbsp;
+<a href="#Run" title="Direct wrapper for AutoIt's Run method.">Run</a>&nbsp;
+<a href="#Run As Set" title="method RunAsSet">Run&nbsp;As&nbsp;Set</a>&nbsp;
+<a href="#Run Wait" title="method RunWait">Run&nbsp;Wait</a>&nbsp;
+<a href="#Send" title="method Send">Send</a>&nbsp;
+<a href="#Shutdown" title="method Shutdown">Shutdown</a>&nbsp;
+<a href="#Statusbar Get Text" title="method StatusbarGetText">Statusbar&nbsp;Get&nbsp;Text</a>&nbsp;
+<a href="#Tool Tip" title="method ToolTip">Tool&nbsp;Tip</a>&nbsp;
+<a href="#Wait For Active Window" title="Wait up to _TimeOut_ seconds for the window with the given _WindowTitle_ and optional">Wait&nbsp;For&nbsp;Active&nbsp;Window</a>&nbsp;
+<a href="#Win Activate" title="method WinActivate">Win&nbsp;Activate</a>&nbsp;
+<a href="#Win Active" title="method WinActive">Win&nbsp;Active</a>&nbsp;
+<a href="#Win Close" title="method WinClose">Win&nbsp;Close</a>&nbsp;
+<a href="#Win Exists" title="method WinExists">Win&nbsp;Exists</a>&nbsp;
+<a href="#Win Get Caret Pos X" title="method WinGetCaretPosX">Win&nbsp;Get&nbsp;Caret&nbsp;Pos&nbsp;X</a>&nbsp;
+<a href="#Win Get Caret Pos Y" title="method WinGetCaretPosY">Win&nbsp;Get&nbsp;Caret&nbsp;Pos&nbsp;Y</a>&nbsp;
+<a href="#Win Get Class List" title="method WinGetClassList">Win&nbsp;Get&nbsp;Class&nbsp;List</a>&nbsp;
+<a href="#Win Get Client Size Height" title="method WinGetClientSizeHeight">Win&nbsp;Get&nbsp;Client&nbsp;Size&nbsp;Height</a>&nbsp;
+<a href="#Win Get Client Size Width" title="method WinGetClientSizeWidth">Win&nbsp;Get&nbsp;Client&nbsp;Size&nbsp;Width</a>&nbsp;
+<a href="#Win Get Handle" title="method WinGetHandle">Win&nbsp;Get&nbsp;Handle</a>&nbsp;
+<a href="#Win Get Pos Height" title="method WinGetPosHeight">Win&nbsp;Get&nbsp;Pos&nbsp;Height</a>&nbsp;
+<a href="#Win Get Pos Width" title="method WinGetPosWidth">Win&nbsp;Get&nbsp;Pos&nbsp;Width</a>&nbsp;
+<a href="#Win Get Pos X" title="method WinGetPosX">Win&nbsp;Get&nbsp;Pos&nbsp;X</a>&nbsp;
+<a href="#Win Get Pos Y" title="method WinGetPosY">Win&nbsp;Get&nbsp;Pos&nbsp;Y</a>&nbsp;
+<a href="#Win Get Process" title="method WinGetProcess">Win&nbsp;Get&nbsp;Process</a>&nbsp;
+<a href="#Win Get State" title="method WinGetState">Win&nbsp;Get&nbsp;State</a>&nbsp;
+<a href="#Win Get Text" title="method WinGetText">Win&nbsp;Get&nbsp;Text</a>&nbsp;
+<a href="#Win Get Title" title="method WinGetTitle">Win&nbsp;Get&nbsp;Title</a>&nbsp;
+<a href="#Win Kill" title="method WinKill">Win&nbsp;Kill</a>&nbsp;
+<a href="#Win Menu Select Item" title="method WinMenuSelectItem">Win&nbsp;Menu&nbsp;Select&nbsp;Item</a>&nbsp;
+<a href="#Win Minimize All" title="method WinMinimizeAll">Win&nbsp;Minimize&nbsp;All</a>&nbsp;
+<a href="#Win Minimize All Undo" title="method WinMinimizeAllUndo">Win&nbsp;Minimize&nbsp;All&nbsp;Undo</a>&nbsp;
+<a href="#Win Move" title="method WinMove">Win&nbsp;Move</a>&nbsp;
+<a href="#Win Set On Top" title="method WinSetOnTop">Win&nbsp;Set&nbsp;On&nbsp;Top</a>&nbsp;
+<a href="#Win Set State" title="method WinSetState">Win&nbsp;Set&nbsp;State</a>&nbsp;
+<a href="#Win Set Title" title="method WinSetTitle">Win&nbsp;Set&nbsp;Title</a>&nbsp;
+<a href="#Win Set Trans" title="method WinSetTrans">Win&nbsp;Set&nbsp;Trans</a>&nbsp;
+<a href="#Win Wait" title="Direct wrapper for AutoIt's WinWait method.">Win&nbsp;Wait</a>&nbsp;
+<a href="#Win Wait Active" title="Direct wrapper for AutoIt's WinWaitActive method.">Win&nbsp;Wait&nbsp;Active</a>&nbsp;
+<a href="#Win Wait Close" title="Direct wrapper for AutoIt's WinWaitClose method.">Win&nbsp;Wait&nbsp;Close</a>&nbsp;
+<a href="#Win Wait Not Active" title="method WinWaitNotActive">Win&nbsp;Wait&nbsp;Not&nbsp;Active</a>&nbsp;
+</div>
+
+<h2>Keywords</h2>
+<table class="keywords">
+<tr>
+  <th class="kw">Keyword</th>
+  <th class="arg">Arguments</th>
+  <th class="doc">Documentation</th>
+</tr>
+<tr>
+  <td class="kw"><a name="Auto It Set Option"></a>Auto It Set Option</td>
+  <td class="arg">strOption=<PyOleEmpty object at 0x00A322F8>, nValue=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method AutoItSetOption</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Block Input"></a>Block Input</td>
+  <td class="arg">nFlag=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method BlockInput</td>
+</tr>
+<tr>
+  <td class="kw"><a name="CD Tray"></a>CD Tray</td>
+  <td class="arg">strDrive=<PyOleEmpty object at 0x00A322F8>, strAction=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method CDTray</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Clip Get"></a>Clip Get</td>
+  <td class="arg"></td>
+  <td class="doc">method ClipGet</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Clip Put"></a>Clip Put</td>
+  <td class="arg">strClip=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ClipPut</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Click"></a>Control Click</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strButton=LEFT, nNumClicks=1, nX=-2147483647, nY=-2147483647</td>
+  <td class="doc">method ControlClick</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Command"></a>Control Command</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strCommand=<PyOleEmpty object at 0x00A322F8>, strExtra=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlCommand</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Disable"></a>Control Disable</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlDisable</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Enable"></a>Control Enable</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlEnable</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Focus"></a>Control Focus</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlFocus</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Focus"></a>Control Get Focus</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method ControlGetFocus</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Handle"></a>Control Get Handle</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetHandle</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Pos Height"></a>Control Get Pos Height</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetPosHeight</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Pos Width"></a>Control Get Pos Width</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetPosWidth</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Pos X"></a>Control Get Pos X</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetPosX</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Pos Y"></a>Control Get Pos Y</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetPosY</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Get Text"></a>Control Get Text</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlGetText</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Hide"></a>Control Hide</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlHide</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control List View"></a>Control List View</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strCommand=<PyOleEmpty object at 0x00A322F8>, strExtra1=<PyOleEmpty object at 0x00A322F8>, strExtra2=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlListView</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Move"></a>Control Move</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, nX=<PyOleEmpty object at 0x00A322F8>, nY=<PyOleEmpty object at 0x00A322F8>, nWidth=-1, nHeight=-1</td>
+  <td class="doc">method ControlMove</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Send"></a>Control Send</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strSendText=<PyOleEmpty object at 0x00A322F8>, nMode=0</td>
+  <td class="doc">method ControlSend</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Set Text"></a>Control Set Text</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strControlText=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlSetText</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Show"></a>Control Show</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlShow</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Control Tree View"></a>Control Tree View</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strControl=<PyOleEmpty object at 0x00A322F8>, strCommand=<PyOleEmpty object at 0x00A322F8>, strExtra1=<PyOleEmpty object at 0x00A322F8>, strExtra2=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ControlTreeView</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Drive Map Add"></a>Drive Map Add</td>
+  <td class="arg">strDevice=<PyOleEmpty object at 0x00A322F8>, strShare=<PyOleEmpty object at 0x00A322F8>, nFlags=0, strUser=, strPwd=</td>
+  <td class="doc">method DriveMapAdd</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Drive Map Del"></a>Drive Map Del</td>
+  <td class="arg">strDevice=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method DriveMapDel</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Drive Map Get"></a>Drive Map Get</td>
+  <td class="arg">strDevice=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method DriveMapGet</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Get Active Window Image"></a>Get Active Window Image</td>
+  <td class="arg">FilePath</td>
+  <td class="doc">Capture an image of the active window into the given <i>FilePath</i>. The given <i>FilePath</i> must be relative to Robot Framework output directory, otherwise the embedded image will not be shown in the log file.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Get Auto It Version"></a>Get Auto It Version</td>
+  <td class="arg"></td>
+  <td class="doc">Returns a string with the version of the AutoItX COM object.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Get Screen Image"></a>Get Screen Image</td>
+  <td class="arg">FilePath</td>
+  <td class="doc">Capture a full screen image into the given <i>FilePath</i>. The given <i>FilePath</i> must be relative to Robot Framework output directory, otherwise the embedded image will not be shown in the log file.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Get Version"></a>Get Version</td>
+  <td class="arg"></td>
+  <td class="doc">Returns a string with the version of the AutoItLibrary.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Ini Delete"></a>Ini Delete</td>
+  <td class="arg">strFilename=<PyOleEmpty object at 0x00A322F8>, strSection=<PyOleEmpty object at 0x00A322F8>, strKey=</td>
+  <td class="doc">method IniDelete</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Ini Read"></a>Ini Read</td>
+  <td class="arg">strFilename=<PyOleEmpty object at 0x00A322F8>, strSection=<PyOleEmpty object at 0x00A322F8>, strKey=<PyOleEmpty object at 0x00A322F8>, strDefault=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method IniRead</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Ini Write"></a>Ini Write</td>
+  <td class="arg">strFilename=<PyOleEmpty object at 0x00A322F8>, strSection=<PyOleEmpty object at 0x00A322F8>, strKey=<PyOleEmpty object at 0x00A322F8>, strValue=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method IniWrite</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Init"></a>Init</td>
+  <td class="arg"></td>
+  <td class="doc">method Init</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Is Admin"></a>Is Admin</td>
+  <td class="arg"></td>
+  <td class="doc">method IsAdmin</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Click"></a>Mouse Click</td>
+  <td class="arg">strButton=LEFT, nX=-2147483647, nY=-2147483647, nClicks=1, nSpeed=-1</td>
+  <td class="doc">method MouseClick</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Click Drag"></a>Mouse Click Drag</td>
+  <td class="arg">strButton=<PyOleEmpty object at 0x00A322F8>, nX1=<PyOleEmpty object at 0x00A322F8>, nY1=<PyOleEmpty object at 0x00A322F8>, nX2=<PyOleEmpty object at 0x00A322F8>, nY2=<PyOleEmpty object at 0x00A322F8>, nSpeed=-1</td>
+  <td class="doc">method MouseClickDrag</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Down"></a>Mouse Down</td>
+  <td class="arg">strButton=LEFT</td>
+  <td class="doc">method MouseDown</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Get Cursor"></a>Mouse Get Cursor</td>
+  <td class="arg"></td>
+  <td class="doc">method MouseGetCursor</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Get Pos X"></a>Mouse Get Pos X</td>
+  <td class="arg"></td>
+  <td class="doc">method MouseGetPosX</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Get Pos Y"></a>Mouse Get Pos Y</td>
+  <td class="arg"></td>
+  <td class="doc">method MouseGetPosY</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Move"></a>Mouse Move</td>
+  <td class="arg">nX=<PyOleEmpty object at 0x00A322F8>, nY=<PyOleEmpty object at 0x00A322F8>, nSpeed=-1</td>
+  <td class="doc">method MouseMove</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Up"></a>Mouse Up</td>
+  <td class="arg">strButton=LEFT</td>
+  <td class="doc">method MouseUp</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Mouse Wheel"></a>Mouse Wheel</td>
+  <td class="arg">strDirection=<PyOleEmpty object at 0x00A322F8>, nClicks=1</td>
+  <td class="doc">method MouseWheel</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Opt"></a>Opt</td>
+  <td class="arg">strOption=<PyOleEmpty object at 0x00A322F8>, nValue=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method Opt</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Pixel Checksum"></a>Pixel Checksum</td>
+  <td class="arg">nLeft=<PyOleEmpty object at 0x00A322F8>, nTop=<PyOleEmpty object at 0x00A322F8>, nRight=<PyOleEmpty object at 0x00A322F8>, nBottom=<PyOleEmpty object at 0x00A322F8>, nStep=1</td>
+  <td class="doc">method PixelChecksum</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Pixel Get Color"></a>Pixel Get Color</td>
+  <td class="arg">nX=<PyOleEmpty object at 0x00A322F8>, nY=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method PixelGetColor</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Pixel Search"></a>Pixel Search</td>
+  <td class="arg">nLeft=<PyOleEmpty object at 0x00A322F8>, nTop=<PyOleEmpty object at 0x00A322F8>, nRight=<PyOleEmpty object at 0x00A322F8>, nBottom=<PyOleEmpty object at 0x00A322F8>, nCol=<PyOleEmpty object at 0x00A322F8>, nVar=0, nStep=1</td>
+  <td class="doc">method PixelSearch</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Process Close"></a>Process Close</td>
+  <td class="arg">strProcess=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ProcessClose</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Process Exists"></a>Process Exists</td>
+  <td class="arg">strProcess=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ProcessExists</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Process Set Priority"></a>Process Set Priority</td>
+  <td class="arg">strProcess=<PyOleEmpty object at 0x00A322F8>, nPriority=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method ProcessSetPriority</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Process Wait"></a>Process Wait</td>
+  <td class="arg">strProcess=<PyOleEmpty object at 0x00A322F8>, nTimeout=0</td>
+  <td class="doc">method ProcessWait</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Process Wait Close"></a>Process Wait Close</td>
+  <td class="arg">strProcess=<PyOleEmpty object at 0x00A322F8>, nTimeout=0</td>
+  <td class="doc">method ProcessWaitClose</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Delete Key"></a>Reg Delete Key</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegDeleteKey</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Delete Val"></a>Reg Delete Val</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8>, strValuename=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegDeleteVal</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Enum Key"></a>Reg Enum Key</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8>, nInstance=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegEnumKey</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Enum Val"></a>Reg Enum Val</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8>, nInstance=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegEnumVal</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Read"></a>Reg Read</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8>, strValuename=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegRead</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Reg Write"></a>Reg Write</td>
+  <td class="arg">strKeyname=<PyOleEmpty object at 0x00A322F8>, strValuename=<PyOleEmpty object at 0x00A322F8>, strType=<PyOleEmpty object at 0x00A322F8>, strValue=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RegWrite</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Run"></a>Run</td>
+  <td class="arg">FileName, WorkingDir=, Flag=</td>
+  <td class="doc">Direct wrapper for AutoIt's Run method.<br />
+<br />
+This is required in order to do error code translation into exceptions for Robot Framework.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Run As Set"></a>Run As Set</td>
+  <td class="arg">strUser=<PyOleEmpty object at 0x00A322F8>, strDomain=<PyOleEmpty object at 0x00A322F8>, strPassword=<PyOleEmpty object at 0x00A322F8>, nOptions=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method RunAsSet</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Run Wait"></a>Run Wait</td>
+  <td class="arg">strRun=<PyOleEmpty object at 0x00A322F8>, strDir=, nShowFlags=1</td>
+  <td class="doc">method RunWait</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Send"></a>Send</td>
+  <td class="arg">strSendText=<PyOleEmpty object at 0x00A322F8>, nMode=0</td>
+  <td class="doc">method Send</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Shutdown"></a>Shutdown</td>
+  <td class="arg">nFlags=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method Shutdown</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Statusbar Get Text"></a>Statusbar Get Text</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=, nPart=1</td>
+  <td class="doc">method StatusbarGetText</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Tool Tip"></a>Tool Tip</td>
+  <td class="arg">strTip=<PyOleEmpty object at 0x00A322F8>, nX=-2147483647, nY=-2147483647</td>
+  <td class="doc">method ToolTip</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Wait For Active Window"></a>Wait For Active Window</td>
+  <td class="arg">WindowTitle, WindowText=, TimeOut=-1</td>
+  <td class="doc">Wait up to <i>TimeOut</i> seconds for the window with the given <i>WindowTitle</i> and optional <i>WindowText</i> to appear. Force this to be the active window after it appears. &nbsp;Optionally do a full screen capture on failure.<br />
+<br />
+Parameters:<br />
+<table border="1" class="doc">
+<tr>
+<td>WindowTitle=&lt;string&gt;</td>
+<td>Title of the application window expected to appear</td>
+</tr>
+<tr>
+<td>[WindowText=&lt;string&gt;]</td>
+<td>Optional text on the window expected to appear</td>
+</tr>
+<tr>
+<td>[TimeOut=&lt;seconds&gt;]</td>
+<td>Optional overide to the default timeout set in __init__</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Activate"></a>Win Activate</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinActivate</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Active"></a>Win Active</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinActive</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Close"></a>Win Close</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinClose</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Exists"></a>Win Exists</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinExists</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Caret Pos X"></a>Win Get Caret Pos X</td>
+  <td class="arg"></td>
+  <td class="doc">method WinGetCaretPosX</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Caret Pos Y"></a>Win Get Caret Pos Y</td>
+  <td class="arg"></td>
+  <td class="doc">method WinGetCaretPosY</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Class List"></a>Win Get Class List</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetClassList</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Client Size Height"></a>Win Get Client Size Height</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetClientSizeHeight</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Client Size Width"></a>Win Get Client Size Width</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetClientSizeWidth</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Handle"></a>Win Get Handle</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetHandle</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Pos Height"></a>Win Get Pos Height</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetPosHeight</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Pos Width"></a>Win Get Pos Width</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetPosWidth</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Pos X"></a>Win Get Pos X</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetPosX</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Pos Y"></a>Win Get Pos Y</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetPosY</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Process"></a>Win Get Process</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetProcess</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get State"></a>Win Get State</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetState</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Text"></a>Win Get Text</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetText</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Get Title"></a>Win Get Title</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinGetTitle</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Kill"></a>Win Kill</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=</td>
+  <td class="doc">method WinKill</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Menu Select Item"></a>Win Menu Select Item</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strItem1=<PyOleEmpty object at 0x00A322F8>, strItem2=, strItem3=, strItem4=, strItem5=, strItem6=, strItem7=, strItem8=</td>
+  <td class="doc">method WinMenuSelectItem</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Minimize All"></a>Win Minimize All</td>
+  <td class="arg"></td>
+  <td class="doc">method WinMinimizeAll</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Minimize All Undo"></a>Win Minimize All Undo</td>
+  <td class="arg"></td>
+  <td class="doc">method WinMinimizeAllUndo</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Move"></a>Win Move</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, nX=<PyOleEmpty object at 0x00A322F8>, nY=<PyOleEmpty object at 0x00A322F8>, nWidth=-1, nHeight=-1</td>
+  <td class="doc">method WinMove</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Set On Top"></a>Win Set On Top</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, nFlag=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method WinSetOnTop</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Set State"></a>Win Set State</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, nFlags=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method WinSetState</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Set Title"></a>Win Set Title</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, strNewTitle=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method WinSetTitle</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Set Trans"></a>Win Set Trans</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=<PyOleEmpty object at 0x00A322F8>, nTrans=<PyOleEmpty object at 0x00A322F8></td>
+  <td class="doc">method WinSetTrans</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Wait"></a>Win Wait</td>
+  <td class="arg">WindowTitle, WindowText=, TimeOut=-1</td>
+  <td class="doc">Direct wrapper for AutoIt's WinWait method.<br />
+<br />
+This is required in order to do return code translation into exceptions for Robot Framework. On failure, optionally captures the full screen image to FAIL_WinWait_&lt;n&gt;.png.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Wait Active"></a>Win Wait Active</td>
+  <td class="arg">WindowTitle, WindowText=, TimeOut=-1</td>
+  <td class="doc">Direct wrapper for AutoIt's WinWaitActive method.<br />
+<br />
+This is required in order to do return code translation into exceptions for Robot Framework. On failure, optionally captures the full screen image to FAIL_WinWaitActive_&lt;n&gt;.png.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Wait Close"></a>Win Wait Close</td>
+  <td class="arg">WindowTitle, WindowText=, TimeOut=-1</td>
+  <td class="doc">Direct wrapper for AutoIt's WinWaitClose method.<br />
+<br />
+This is required in order to do return code translation into exceptions for Robot Framework. On failure, captures the full screen image to FAIL_WinWaitClose.png.</td>
+</tr>
+<tr>
+  <td class="kw"><a name="Win Wait Not Active"></a>Win Wait Not Active</td>
+  <td class="arg">strTitle=<PyOleEmpty object at 0x00A322F8>, strText=, nTimeout=0</td>
+  <td class="doc">method WinWaitNotActive</td>
+</tr>
+</table>
+<p class="footer">
+Altogether 99 keywords.<br />
+Generated by <a href="http://code.google.com/p/robotframework/wiki/LibraryDocumentationTool">libdoc.py</a>
+on 2009-11-11 10:51:57.
+</p>
+</body>
+</html>
