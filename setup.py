@@ -51,25 +51,34 @@ if __name__ == "__main__":
     if sys.argv[1].lower() == "install" :
         if os.name == "nt" :
             #
-            # Install AutoItX if not already installed
+            # Install and register AutoItX
             #
-            if not os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/AutoItX3.dll")) :
-                instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
-                if not os.path.isdir(instDir) :
-                    os.makedirs(instDir)
-                instFile = os.path.normpath(os.path.join(instDir, "AutoItX3.dll"))
-                shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
-                #
-                # Register the AutoItX COM object
-                # and make its methods known to Python
-                #
-                cmd = r"C:\WINDOWS\system32\regsvr32.exe /S %s" % instFile
-                print cmd
-                subprocess.check_call(cmd)
-                makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
-                cmd = "python %s %s" % (makepy, instFile)
-                print cmd
-                subprocess.check_call(cmd)
+            if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/AutoItX3.dll")) :
+                print "Don't think we need to unregister the old one..."
+
+            instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
+            if not os.path.isdir(instDir) :
+                os.makedirs(instDir)
+            instFile = os.path.normpath(os.path.join(instDir, "AutoItX3.dll"))
+            shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
+            #
+            # Register the AutoItX COM object
+            # and make its methods known to Python
+            #
+            cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
+            print cmd
+            subprocess.check_call(cmd, shell=True)
+            makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
+            #
+            # Make sure we have win32com installed
+            #
+            if not os.path.isfile(makepy) :
+                print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
+                sys.exit(2)
+
+            cmd = "python %s %s" % (makepy, instFile)
+            print cmd
+            subprocess.check_call(cmd)
             #
             # Install PIL if it is not already installed
             #
@@ -77,7 +86,7 @@ if __name__ == "__main__":
                 print "Installing PIL, please accept all defaults"
                 subprocess.check_call(r"3rdPartyTools\PIL\PIL-1.1.6.win32-py2.5.exe")
         else :
-            print "AutoIt cannot be installed on non-Windows platforms."
+            print "AutoItLibrary cannot be installed on non-Windows platforms."
             sys.exit(2)
     #
     # Do the distutils installation
@@ -106,6 +115,7 @@ if __name__ == "__main__":
                              ]),
                            (r"C:\RobotFramework\Extensions\AutoItLibrary\tests",
                              ["tests/CalculatorGUIMap.py",
+                              "tests/__init__.html",
                               "tests/Calculator_Test_Cases.html",
                               "tests/RobotIDE.bat",
                               "tests/RunTests.bat"

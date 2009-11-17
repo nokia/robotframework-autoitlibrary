@@ -54,4 +54,19 @@ GUIMAP = {"0" : "Button45",
           "Clear" : "Button74",
          }
 #
+# Map application-specific names of menu items to the sequence of
+# ALT keys used to access these menu items, since the Windows Calculator
+# doesn't really use a "Menu" GUI object to implement its menus
+# and AutoIt can't see these as GUI objects.
+#
+MENUMAP = {"View Standard"       : "VT",
+           "View Scientific"     : "VS",
+           "View Decimal"        : "VD",
+           "View Hex"            : "VH",
+           "View Digit grouping" : "VI",
+           "Edit Copy"           : "EC",
+           "Edit Paste"          : "EP",
+           "Exit"                : "{F4}"
+          }
+#
 # -------------------------------- End of file --------------------------------
