@@ -4,7 +4,7 @@ Module:  AutoItLibrary
 Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          (http://www.autoitscript.com/autoit3/index.shtml) via AutoIt's AutoItX.dll COM object.
 
-         Copyright (c) 2008-2009 Texas Instruments, Inc.
+         Copyright (c) 2008-2010 Texas Instruments, Inc.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -19,17 +19,20 @@ Purpose: Provides a Robot Framework keyword wrapper for the freeware AutoIt tool
          limitations under the License.
 """
 __author__  = "Martin Taylor <cmtaylor@ti.com>"
-__version__ = "1.0"
+__version__ = "1.1"
 #
 # Import the libraries we need
 #
 import win32com.client                  # For COM interface to AutoIt
-import ImageGrab                        # For screen capture via Python Image Library (PIL)
 import sys                              # For command line args
 import os                               # For file path manipulation
 import types
 import Logger
 import Counter
+try :
+    import ImageGrab                    # For screen capture via Python Image Library (PIL)
+except :
+    ImageGrab = None
 #
 #-------------------------------------------------------------------------------
 #
@@ -73,10 +76,22 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         #
         # Make a connection to the AutoIt COM object
         #
-        self._AutoIt     = win32com.client.Dispatch("AutoItX3.Control")
+        self._AutoIt = win32com.client.Dispatch("AutoItX3.Control")
+        #
+        # Remember our input parameters
+        #
         self._OutputDir  = OutputDir
         self._TimeOut    = int(TimeOut)
         self._CaptureScreenOnError = CaptureScreenOnError
+        #
+        # Check that PIL is installed if CaptureScreenOnError is True
+        #
+        if self._CaptureScreenOnError and ImageGrab == None :
+            self._warn("Python Imaging Library (PIL) is not installed, but is required for CaptureScreenOnError... set False")
+            self._CaptureScreenOnError = False
+        #
+        # Set other properties
+        #
         self._my_kws     = None
         self._AutoIt_kws = None
         #
@@ -93,9 +108,9 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         the AutoItLibrary class.  It relies on the fact that the AutoItLibrary installer ran the
         win32com/client/makepy.py program on the AutoItX3.dll COM file in order to make the COM methods
         visible to Python.  This tool is documented here:
-            http://docs.activestate.com/activepython/2.4/pywin32/html/com/win32com/HTML/QuickStartClientCom.html
+            http://docs.activestate.com/activepython/2.6/pywin32/html/com/win32com/HTML/QuickStartClientCom.html
         and here:
-            http://docs.activestate.com/activepython/2.4/pywin32/html/com/win32com/HTML/GeneratedSupport.html
+            http://docs.activestate.com/activepython/2.6/pywin32/html/com/win32com/HTML/GeneratedSupport.html
         """
         if Name in self.__get_AutoIt_keywords() :
             retAttr = getattr(self._AutoIt, Name)
@@ -163,6 +178,11 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         otherwise the embedded image will not be shown in the log file.
         """
         #
+        # Check that PIL is installed
+        #
+        if ImageGrab == None :
+            raise RuntimeError("Python Imaging Library (PIL) is not installed, but is required for GetActiveWindowImage")
+        #
         # Check for a valid FilePath and make sure the directories exist
         #
         if FilePath and os.path.isabs(FilePath):
@@ -198,6 +218,11 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         The given _FilePath_ must be relative to Robot Framework output directory,
         otherwise the embedded image will not be shown in the log file.
         """
+        #
+        # Check that PIL is installed
+        #
+        if ImageGrab == None :
+            raise RuntimeError("Python Imaging Library (PIL) is not installed, but is required for GetScreenImage")
         #
         # Check for a valid FilePath and make sure the directories exist
         #
@@ -290,7 +315,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         if Result == 0 :
             Result = "Window '%s' (%s) failed to be active in %s seconds" % (WindowTitle, WindowText, TimeOut)
             if self._CaptureScreenOnError :
-                self.GetScreenImage("FAIL_WinWaitActive%d.png" % self._next())
+                self.GetScreenImage("FAIL_WinWaitActive_%d.png" % self._next())
             raise Exception, Result
     #
     #-------------------------------------------------------------------------------
@@ -300,7 +325,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         Direct wrapper for AutoIt's WinWaitClose method.
 
         This is required in order to do return code translation into exceptions for Robot Framework.
-        On failure, captures the full screen image to FAIL_WinWaitClose.png.
+        On failure, optionally captures the full screen image to FAIL_WinWaitClose_<n>.png.
         """
         #
         # Apply default TimeOut if not set
@@ -315,7 +340,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         if Result == 0 :
             Result = "Window '%s' (%s) failed to close in %s seconds" % (WindowTitle, WindowText, TimeOut)
             if self._CaptureScreenOnError :
-                self.GetScreenImage("FAIL_WinWaitClose%d.png" % self._next())
+                self.GetScreenImage("FAIL_WinWaitClose_%d.png" % self._next())
             raise Exception, Result
     #
     #-------------------------------------------------------------------------------

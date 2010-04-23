@@ -6,8 +6,6 @@ include 3rdPartyTools/AutoIt/AutoItX3.dll
 include 3rdPartyTools/AutoIt/AutoItX.chm
 include 3rdPartyTools/AutoIt/Au3Info.exe
 include 3rdPartyTools/AutoIt/AutoIt_License.html
-include 3rdPartyTools/PIL/PIL-1.1.6.win32-py2.5.exe
-include 3rdPartyTools/PIL/PIL_License.html
 include tests/*.py
 include tests/*.html
 include tests/*.bat

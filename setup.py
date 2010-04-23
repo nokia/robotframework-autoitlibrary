@@ -4,7 +4,7 @@ Module:  AutoItLibrary Installation Module
 Purpose: This is a Python "Distutils" setup program used to build installers for and to install the
          robotframework-AutoItLibrary.
 
-         Copyright (c) 2008-2009 Texas Instruments, Inc.
+         Copyright (c) 2008-2010 Texas Instruments, Inc.
 
          Licensed under the Apache License, Version 2.0 (the "License");
          you may not use this file except in compliance with the License.
@@ -79,20 +79,18 @@ if __name__ == "__main__":
             cmd = "python %s %s" % (makepy, instFile)
             print cmd
             subprocess.check_call(cmd)
-            #
-            # Install PIL if it is not already installed
-            #
-            if not os.path.exists(os.path.join(get_python_lib(), "PIL")) :
-                print "Installing PIL, please accept all defaults"
-                subprocess.check_call(r"3rdPartyTools\PIL\PIL-1.1.6.win32-py2.5.exe")
         else :
             print "AutoItLibrary cannot be installed on non-Windows platforms."
             sys.exit(2)
     #
+    # Figure out the install path
+    #
+    destPath = os.path.normpath(os.path.join(os.getenv("HOMEDRIVE"), r"\RobotFramework\Extensions\AutoItLibrary"))
+    #
     # Do the distutils installation
     #
     setup(name         = "AutoItLibrary",
-          version      = "1.0",
+          version      = "1.1",
           description  = "AutoItLibrary for Robot Framework",
           author       = "Martin Taylor",
           author_email = "cmtaylor@ti.com",
@@ -103,7 +101,7 @@ if __name__ == "__main__":
           long_description = DESCRIPTION,
           package_dir  = {'' : "src"},
           packages     = ["AutoItLibrary"],
-          data_files   = [(r"C:\RobotFramework\Extensions\AutoItLibrary",
+          data_files   = [(destPath,
                              ["ReadMe.txt",
                               "COPYRIGHT.txt",
                               "LICENSE.txt",
@@ -111,9 +109,8 @@ if __name__ == "__main__":
                               "3rdPartyTools/AutoIt/Au3Info.exe",
                               "3rdPartyTools/AutoIt/AutoItX.chm",
                               "3rdPartyTools/AutoIt/AutoIt_License.html",
-                              "3rdPartyTools/PIL/PIL_License.html",
                              ]),
-                           (r"C:\RobotFramework\Extensions\AutoItLibrary\tests",
+                           (os.path.join(destPath, "tests"),
                              ["tests/CalculatorGUIMap.py",
                               "tests/__init__.html",
                               "tests/Calculator_Test_Cases.html",

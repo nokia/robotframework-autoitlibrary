@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="RobotIDE" /> 
+<meta name="generator" content="RIDE" /> 
 <meta name="rf-template" content="False" /> 
 <style type="text/css">
 html {
@@ -134,20 +134,13 @@ td.name, th.name {
 <td class="name"></td>
 <td>Win Wait</td>
 <td>Calculator</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>${Ans} =</td>
-<td>Control Get Text</td>
-<td>Calculator</td>
-<td>${EMPTY}</td>
-</tr>
-<tr>
-<td class="name"></td>
-<td>...</td>
-<td>Edit1</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -155,7 +148,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Should Be Equal As Numbers</td>
 <td>${Ans}</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
@@ -181,20 +174,13 @@ td.name, th.name {
 <td class="name"></td>
 <td>Win Wait</td>
 <td>Calculator</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>${Ans} =</td>
-<td>Control Get Text</td>
-<td>Calculator</td>
-<td>${EMPTY}</td>
-</tr>
-<tr>
-<td class="name"></td>
-<td>...</td>
-<td>Edit1</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -202,7 +188,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Should Be Equal As Numbers</td>
 <td>${Ans}</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
@@ -228,20 +214,13 @@ td.name, th.name {
 <td class="name"></td>
 <td>Win Wait</td>
 <td>Calculator</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>${Ans} =</td>
-<td>Control Get Text</td>
-<td>Calculator</td>
-<td>${EMPTY}</td>
-</tr>
-<tr>
-<td class="name"></td>
-<td>...</td>
-<td>Edit1</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -249,7 +228,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Should Be Equal As Numbers</td>
 <td>${Ans}</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
@@ -275,20 +254,13 @@ td.name, th.name {
 <td class="name"></td>
 <td>Win Wait</td>
 <td>Calculator</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>${Ans} =</td>
-<td>Control Get Text</td>
-<td>Calculator</td>
-<td>${EMPTY}</td>
-</tr>
-<tr>
-<td class="name"></td>
-<td>...</td>
-<td>Edit1</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -296,7 +268,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Should Be Equal As Numbers</td>
 <td>${Ans}</td>
-<td>42.</td>
+<td>42</td>
 <td></td>
 </tr>
 <tr>
@@ -313,15 +285,36 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>Click Buttons</td>
-<td>Hex Dword</td>
+<td>[Setup]</td>
+<td>Set Hex Mode</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>Send</td>
-<td>DE01F100{+}ABCDEF=</td>
+<td>DE01F100</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>{+}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>ABCDEF</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>=</td>
 <td></td>
 <td></td>
 </tr>
@@ -334,15 +327,8 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>Select Calculator Menu Item</td>
-<td>Edit Copy</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td class="name"></td>
 <td>${Ans} =</td>
-<td>Clip Get</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -367,8 +353,8 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>Click Buttons</td>
-<td>Hex Dword</td>
+<td>[Setup]</td>
+<td>Set Hex Mode</td>
 <td></td>
 <td></td>
 </tr>
@@ -437,15 +423,8 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>Select Calculator Menu Item</td>
-<td>Edit Copy</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td class="name"></td>
 <td>${Ans} =</td>
-<td>Clip Get</td>
+<td>Get Answer</td>
 <td></td>
 <td></td>
 </tr>
@@ -478,15 +457,36 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>Click Buttons</td>
-<td>Hex Dword</td>
+<td>[Setup]</td>
+<td>Set Hex Mode</td>
 <td></td>
 <td></td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>Send</td>
-<td>DE01F100{+}ABCDEF=</td>
+<td>DE01F100</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>{+}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>ABCDEF</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>=</td>
 <td></td>
 <td></td>
 </tr>
@@ -558,6 +558,13 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
+<td>Get Calculator Version</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
 <td>Select Calculator Menu Item</td>
 <td>View Scientific</td>
 <td></td>
@@ -567,7 +574,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Wait For Active Window</td>
 <td>Calculator</td>
-<td>Hyp</td>
+<td>Degrees</td>
 <td></td>
 </tr>
 <tr>
@@ -586,22 +593,22 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>${Result}=</td>
+<td>${Result}</td>
+<td>${ErrMsg} =</td>
 <td>Run Keyword And Ignore Error</td>
 <td>Win Wait</td>
-<td>Calculator</td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>...</td>
-<td>12345.</td>
-<td></td>
-<td></td>
+<td>Calculator</td>
+<td>12345</td>
+<td>3</td>
 </tr>
 <tr>
 <td class="name"></td>
 <td>Run Keyword If</td>
-<td>${Result} == "FAIL"</td>
+<td>"${Result}" == "FAIL"</td>
 <td>Select Calculator Menu Item</td>
 <td>View Digit grouping</td>
 </tr>
@@ -609,7 +616,7 @@ td.name, th.name {
 <td class="name"></td>
 <td>Win Wait</td>
 <td>Calculator</td>
-<td>12345.</td>
+<td>12345</td>
 <td></td>
 </tr>
 <tr>
@@ -707,7 +714,7 @@ td.name, th.name {
 </tr>
 <tr>
 <td class="name"></td>
-<td>:: FOR</td>
+<td>:FOR</td>
 <td>${ButtonName}</td>
 <td>IN</td>
 <td>@{Buttons}</td>
@@ -736,7 +743,7 @@ td.name, th.name {
 <tr>
 <td class="name"></td>
 <td>[Documentation]</td>
-<td colspan="3">The Windows Calculator application doesn't really use a Windows GUI Menu to implement its menus. &nbsp;Therefore AutoIt can't see the menus as menu GUI objects. &nbsp;The only way to access the Calculator menus is via the ALT key sequences. In Win XP the Calculator menu ALT key letters are underlined, and thus available, all the time. &nbsp;Microsoft, in their wisdom, changed this in Win Vista so that you have to press the ALT key and "wait a bit" before the ALT key letters are underlined on the GUI. &nbsp;When they're not underlined, they don't work. &nbsp;Since AutoIt can send ALT key sequences VERY FAST, a sequence such as !VS (ALT+V+S) doesn't work on Win Vista, while it does work on Win XP. &nbsp;To get around this problem, and to make menu item selection more "tester friendly" we provide this keyword. &nbsp;It takes the name of a menu item as defined in the MENUMAP dictionary in the CalculatorGUIMap.py file. &nbsp;The MENUMAP dictionary items translate the application oriented menu name into the sequence of ALT keys to access that menu item. &nbsp;To make this work on Win XP and Win Vista, this keyword sends the ALT key first, waits a bit, then sends the sequence of keys from the MENUMAP. &nbsp;Complicated, but welcome to the wierd world of Windows GUI testing!</td>
+<td colspan="3">The Windows Calculator application doesn't really use a Windows GUI Menu to implement its menus. Therefore AutoIt can't see the menus as menu GUI objects. The only way to access the Calculator menus is via the ALT key sequences. In Win XP the Calculator menu ALT key letters are underlined, and thus available, all the time. Microsoft, in their wisdom, changed this in Win Vista so that you have to press the ALT key and "wait a bit" before the ALT key letters are underlined on the GUI. When they're not underlined, they don't work. Since AutoIt can send ALT key sequences VERY FAST, a sequence such as !VS (ALT+V+S) doesn't work on Win Vista, while it does work on Win XP. To get around this problem, and to make menu item selection more "tester friendly" we provide this keyword. It takes the name of a menu item as defined in the MENUMAP dictionary in the CalculatorGUIMap.py file. The MENUMAP dictionary items translate the application oriented menu name into the sequence of ALT keys to access that menu item. To make this work on Win XP and Win Vista, this keyword sends the ALT key first, waits a bit, then sends the sequence of keys from the MENUMAP. Complicated, but welcome to the wierd world of Windows GUI testing!</td>
 </tr>
 <tr>
 <td class="name"></td>
@@ -770,6 +777,267 @@ td.name, th.name {
 <td class="name"></td>
 <td>Send</td>
 <td>{ALTUP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Get Calculator Version">Get Calculator Version</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get the version of the Windows Calculator. Version 5.1 is WinXP, Version 6.1 is Win7.\n<br />
+ Set the suite variables to match the found version.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>{ALTDOWN}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>ha</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Send</td>
+<td>{ALTUP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Win Wait Active</td>
+<td>About Calculator</td>
+<td>Version</td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${WinText} =</td>
+<td>Control Get Text</td>
+<td>About Calculator</td>
+<td>Version</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>Static3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${WinText2} =</td>
+<td>Run Keyword If</td>
+<td>"Version" not in "${WinText}"</td>
+<td>Control Get Text</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>About Calculator</td>
+<td>Version</td>
+<td>Static4</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${WinText} =</td>
+<td>Set Variable If</td>
+<td>"Version" in "${WinText2}"</td>
+<td>${WinText2}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${WinText}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>"Version" not in "${WinText}"</td>
+<td>Fail</td>
+<td>Cannot find Calculator version</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${GUIMAP} =</td>
+<td>Set Variable If</td>
+<td>"5.1" in "${WinText}"</td>
+<td>${GUIMAP_51}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${GUIMAP} =</td>
+<td>Set Variable If</td>
+<td>"6.0" in "${WinText}"</td>
+<td>${GUIMAP_60}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GUIMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${GUIMAP} =</td>
+<td>Set Variable If</td>
+<td>"6.1" in "${WinText}"</td>
+<td>${GUIMAP_61}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${GUIMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Run Keyword If</td>
+<td>${GUIMAP} == None</td>
+<td>Fail</td>
+<td>Calculator version not supported: ${WinText}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Suite Variable</td>
+<td>${GUIMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${MENUMAP} =</td>
+<td>Set Variable If</td>
+<td>"5.1" in "${WinText}"</td>
+<td>${MENUMAP_51}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${MENUMAP} =</td>
+<td>Set Variable If</td>
+<td>"6.0" in "${WinText}"</td>
+<td>${MENUMAP_60}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${MENUMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${MENUMAP} =</td>
+<td>Set Variable If</td>
+<td>"6.1" in "${WinText}"</td>
+<td>${MENUMAP_61}</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>...</td>
+<td>${MENUMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Set Suite Variable</td>
+<td>${MENUMAP}</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Control Click</td>
+<td>About Calculator</td>
+<td>Version</td>
+<td>Button1</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Set Hex Mode">Set Hex Mode</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Put the calculator in Hex arithmetic Dword mode.</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Calculator Menu Item</td>
+<td>View Hex</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Click Buttons</td>
+<td>Hex Dword</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Sleep</td>
+<td>1 sec</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"><a name="keyword_Get Answer">Get Answer</a></td>
+<td>[Documentation]</td>
+<td colspan="3">Get the answer via the clipboard, since the control is not accessible in the 6.1 version (it used to be "Edit1" in the 5.1 version).</td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>Select Calculator Menu Item</td>
+<td>Edit Copy</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>${Answer} =</td>
+<td>Clip Get</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td class="name"></td>
+<td>[Return]</td>
+<td>${Answer}</td>
 <td></td>
 <td></td>
 </tr>
