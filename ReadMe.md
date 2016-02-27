@@ -2,7 +2,9 @@ AutoItLibrary
 =============
 
 更新说明：
+
 1、新增了64位Windows机器专用版本v1.1.1，请下载该版本
+
 2、32位Windows机器请正常下载v1.1版本。
 
 Introduction
