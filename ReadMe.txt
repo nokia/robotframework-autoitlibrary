@@ -15,7 +15,13 @@ Image Library tool PIL (http://www.pythonware.com/products/pil/).
 
 Installation
 ------------
+User can install AutoItLibrary in 2 ways:
 
+## install from pypi
+Install AutoItLibrary by pypi seems more easily:
+```pypi install robotframework-autoitlibrary```
+
+## install from source 
 AutoItLibrary installs its own file and, if not already present, the 3rd party
 AutoIt and PIL tools.  To install, unzip the release file into a temporary
 directory on your PC, open a command window in that directory and type:
@@ -27,6 +33,7 @@ This installation creates the folder:
    C:\RobotFramework\Extensions\AutoItLibrary
 
 on your PC and puts various files into this directory folder.
+
 
 
 Documentation

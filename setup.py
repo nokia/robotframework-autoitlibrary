@@ -89,12 +89,12 @@ if __name__ == "__main__":
     #
     # Do the distutils installation
     #
-    setup(name         = "AutoItLibrary",
+    setup(name         = "robotframework-autoitlibrary",
           version      = "1.1",
           description  = "AutoItLibrary for Robot Framework",
-          author       = "Martin Taylor",
-          author_email = "cmtaylor@ti.com",
-          url          = "http://code.google.com/p/robotframework-autoitlibrary/",
+          author       = "Joe Hisaishi",
+          author_email = "joehisaishi1943@gmail.com",
+          url          = "https://github.com/lucyking/robotframework-autoitlibrary",
           license      = "Apache License 2.0",
           platforms    = "Microsoft Windows",
           classifiers  = CLASSIFIERS.splitlines(),
