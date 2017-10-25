@@ -26,6 +26,7 @@ import sys
 import os
 import shutil
 import subprocess
+import platform
 
 CLASSIFIERS = """
 Development Status :: 5 - Production/Stable
@@ -60,7 +61,11 @@ if __name__ == "__main__":
             if not os.path.isdir(instDir) :
                 os.makedirs(instDir)
             instFile = os.path.normpath(os.path.join(instDir, "AutoItX3.dll"))
-            shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
+            if "32bit" in platform.architecture()[0] :
+                print "Here is from 32bit OS"
+                shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
+            else :
+                shutil.copyfile("3rdPartyTools/AutoIt/lib64/AutoItX3.dll", instFile)
             #
             # Register the AutoItX COM object
             # and make its methods known to Python
@@ -90,7 +95,7 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "robotframework-autoitlibrary",
-          version      = "1.1",
+          version      = "1.2.1",
           description  = "AutoItLibrary for Robot Framework",
           author       = "Joe Hisaishi",
           author_email = "joehisaishi1943@gmail.com",
@@ -109,6 +114,8 @@ if __name__ == "__main__":
                               "3rdPartyTools/AutoIt/Au3Info.exe",
                               "3rdPartyTools/AutoIt/AutoItX.chm",
                               "3rdPartyTools/AutoIt/AutoIt_License.html",
+                              "3rdPartyTools/AutoIt/AutoItX3.dll",
+                              "3rdPartyTools/AutoIt/lib64/AutoItX3.dll",
                              ]),
                            (os.path.join(destPath, "tests"),
                              ["tests/CalculatorGUIMap.py",
