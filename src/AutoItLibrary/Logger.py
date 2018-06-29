@@ -25,7 +25,7 @@ __version__ = "1.0.1"
 
 class Logger :
     def _log(self, message, level='INFO') :
-        print '*%s* %s' % (level, message)
+        print('*%s* %s' % (level, message))
 
     def _info(self, message) :
         self._log(message)
@@ -43,13 +43,13 @@ class Logger :
         """
         Print a generic log message for the entry point of a given keyword, KW at *INFO* level.
         """
-        self._info("%s.%s(%s)" % (KW.im_class.__name__, KW.func_name, self._FormatArgs(KW, *args, **kwargs)))
+        self._info("%s.%s(%s)" % (KW.__self__.__class__.__name__, KW.__name__, self._FormatArgs(KW, *args, **kwargs)))
 
     def _debugKW(self, KW, *args, **kwargs) :
         """
         Print a generic log message for the entry point of a given keyword, KW at *DEBUG* level.
         """
-        self._debug("%s.%s(%s)" % (KW.im_class.__name__, KW.func_name, self._FormatArgs(KW, *args, **kwargs)))
+        self._debug("%s.%s(%s)" % (KW.__self__.__class__.__name__, KW.__name__, self._FormatArgs(KW, *args, **kwargs)))
 
 
     def _FormatASCII(self, pyObj) :
@@ -106,7 +106,7 @@ class Logger :
         # argument name from the tuple of co_varnames obtained above.
         #
         if len(args) > 0 :
-            funcArgs = func.func_code.co_varnames
+            funcArgs = func.__code__.co_varnames
             #
             # If func is a method of a class then it will have "self" as the first argument.
             # We don't want to print that, and it won't be in args or kwargs anyway, so remove it.
@@ -122,7 +122,7 @@ class Logger :
         #
         if len(kwargs.keys()) > 0 :
             if funcArgs == None :
-                funcArgs = func.func_code.co_varnames
+                funcArgs = func.__code__.co_varnames
                 #
                 # If func is a method of a class then it will have "self" as the first argument.
                 # We don't want to print that, and it won't be in args or kwargs anyway, so remove it.

@@ -1,6 +1,5 @@
 include COPYRIGHT.txt
 include LICENSE.txt
-include ReadMe.txt
 include doc/AutoItLibrary.html
 include 3rdPartyTools/AutoIt/AutoItX3.dll
 include 3rdPartyTools/AutoIt/AutoItX.chm

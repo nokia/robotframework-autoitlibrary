@@ -27,10 +27,10 @@ import win32com.client                  # For COM interface to AutoIt
 import sys                              # For command line args
 import os                               # For file path manipulation
 import types
-import Logger
-import Counter
+from . import Logger
+from . import Counter
 try :
-    import ImageGrab                    # For screen capture via Python Image Library (PIL)
+    from PIL import ImageGrab                    # For screen capture via Python Image Library (PIL)
 except :
     ImageGrab = None
 #
@@ -266,7 +266,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         # Check the AutoIt error property
         #
         if self._AutoIt.error == 1 :
-            raise Exception, "Failed to run %s" % cmd
+            raise Exception("Failed to run %s" % cmd)
     #
     #-------------------------------------------------------------------------------
     #
@@ -291,7 +291,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
             Result = "Window '%s' (%s) failed to appear in %s seconds" % (WindowTitle, WindowText, TimeOut)
             if self._CaptureScreenOnError :
                 self.GetScreenImage("FAIL_WinWait_%d.png" % self._next())
-            raise Exception, Result
+            raise Exception(Result)
     #
     #-------------------------------------------------------------------------------
     #
@@ -316,7 +316,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
             Result = "Window '%s' (%s) failed to be active in %s seconds" % (WindowTitle, WindowText, TimeOut)
             if self._CaptureScreenOnError :
                 self.GetScreenImage("FAIL_WinWaitActive_%d.png" % self._next())
-            raise Exception, Result
+            raise Exception(Result)
     #
     #-------------------------------------------------------------------------------
     #
@@ -341,7 +341,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
             Result = "Window '%s' (%s) failed to close in %s seconds" % (WindowTitle, WindowText, TimeOut)
             if self._CaptureScreenOnError :
                 self.GetScreenImage("FAIL_WinWaitClose_%d.png" % self._next())
-            raise Exception, Result
+            raise Exception(Result)
     #
     #-------------------------------------------------------------------------------
     #
