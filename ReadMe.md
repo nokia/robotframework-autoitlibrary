@@ -1,9 +1,9 @@
 AutoItLibrary
 =============
 
-更新说明：
+Changelog：
 
-  添加pip安装支持
+  Added Python 3 support
 
 Introduction
 ------------
@@ -19,13 +19,14 @@ Image Library tool PIL (http://www.pythonware.com/products/pil/).
 
 Installation
 ------------
-#### pypi install
-More easily:
+Make sure you run the installation command with administrative privilages.
+
+#### pip install
    
-```pypi install robotframework-autoitlibrary```
+```pip install robotframework-autoitlibrary```
 
 
-#### source install 
+#### source install
 AutoItLibrary installs its own file and, if not already present, the 3rd party
 AutoIt and PIL tools.  To install, unzip the release file into a temporary
 directory on your PC, open a command window in that directory and type:
@@ -34,7 +35,7 @@ directory on your PC, open a command window in that directory and type:
 
 This installation creates the folder:
 
-   C:\RobotFramework\Extensions\AutoItLibrary
+    C:\RobotFramework\Extensions\AutoItLibrary
 
 on your PC and puts various files into this directory folder.
 
@@ -42,7 +43,7 @@ on your PC and puts various files into this directory folder.
 Documentation
 -------------
 
-AutoItLibrary documentation is installed by the installation process into
+AutoItLibrary documentation is installed by the installation process into:
 
     C:\RobotFramework\Extensions\AutoItLibrary\AutoItLibrary.html
 
@@ -59,4 +60,4 @@ The AutoItLibrary installer puts a suite of self-tests here:
 To run these tests, which exercise the Windows Calculator GUI, run the
 RunTests.bat file in the above folder.
 
--------------------------------- End of file --------------------------------
+Note: Windows 10 Calculator is not supported.

@@ -55,14 +55,14 @@ if __name__ == "__main__":
             # Install and register AutoItX
             #
             if os.path.isfile(os.path.join(get_python_lib(), "AutoItLibrary/lib/AutoItX3.dll")) :
-                print "Don't think we need to unregister the old one..."
+                print("Don't think we need to unregister the old one...")
 
             instDir = os.path.normpath(os.path.join(get_python_lib(), "AutoItLibrary/lib"))
             if not os.path.isdir(instDir) :
                 os.makedirs(instDir)
             instFile = os.path.normpath(os.path.join(instDir, "AutoItX3.dll"))
             if "32bit" in platform.architecture()[0] :
-                print "Here is from 32bit OS"
+                print("Here is from 32bit OS")
                 shutil.copyfile("3rdPartyTools/AutoIt/AutoItX3.dll", instFile)
             else :
                 shutil.copyfile("3rdPartyTools/AutoIt/lib64/AutoItX3.dll", instFile)
@@ -71,21 +71,21 @@ if __name__ == "__main__":
             # and make its methods known to Python
             #
             cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
-            print cmd
+            print(cmd)
             subprocess.check_call(cmd, shell=True)
             makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
             #
             # Make sure we have win32com installed
             #
             if not os.path.isfile(makepy) :
-                print "AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/."
+                print("AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/.")
                 sys.exit(2)
 
             cmd = "python %s %s" % (makepy, instFile)
-            print cmd
+            print(cmd)
             subprocess.check_call(cmd)
         else :
-            print "AutoItLibrary cannot be installed on non-Windows platforms."
+            print("AutoItLibrary cannot be installed on non-Windows platforms.")
             sys.exit(2)
     #
     # Figure out the install path
@@ -106,9 +106,9 @@ if __name__ == "__main__":
           long_description = DESCRIPTION,
           package_dir  = {'' : "src"},
           packages     = ["AutoItLibrary"],
+          install_requires = ['pywin32', 'pillow'],
           data_files   = [(destPath,
-                             ["ReadMe.txt",
-                              "COPYRIGHT.txt",
+                             ["COPYRIGHT.txt",
                               "LICENSE.txt",
                               "doc/AutoItLibrary.html",
                               "3rdPartyTools/AutoIt/Au3Info.exe",
