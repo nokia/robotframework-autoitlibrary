@@ -33,6 +33,11 @@ try :
     from PIL import ImageGrab                    # For screen capture via Python Image Library (PIL)
 except :
     ImageGrab = None
+
+# Fix https://github.com/nokia/robotframework-autoitlibrary/issues/13
+import re                                   # To detect Windows Disk root path (c:\, d:\, ..., etc)
+from robot.libraries.BuiltIn import BuiltIn # Get RobotFramework's ${OUTPUTDIR} to store screenshot image
+
 #
 #-------------------------------------------------------------------------------
 #
@@ -61,7 +66,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
 
     ROBOT_LIBRARY_SCOPE = "GLOBAL"
 
-    def __init__(self, OutputDir=".", TimeOut=60, CaptureScreenOnError=False) :
+    def __init__(self, TimeOut=60, CaptureScreenOnError=False) :
         """
         | OutputDir=<path>          | Output directory for captured screenshots. Should set to _${OUTPUTDIR}_ |
         | Timeout=<seconds>         | Default TimeOut value in seconds.                                       |
@@ -80,7 +85,8 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         #
         # Remember our input parameters
         #
-        self._OutputDir  = OutputDir
+        self._OutputDir  = self._get_log_dir()
+        self._root_dir_reg = re.compile(r'^[a-zA-Z]:\\{1,2}$')
         self._TimeOut    = int(TimeOut)
         self._CaptureScreenOnError = CaptureScreenOnError
         #
@@ -168,6 +174,17 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         Returns a string with the version of the AutoItX COM object.
         """
         return "AutoItX %s (COM object)" % self._AutoIt.version
+
+    #
+    #-------------------------------------------------------------------------------
+    #
+    def _get_log_dir(self):
+        variables = BuiltIn().get_variables()
+        logfile = variables['${LOG FILE}']
+        if logfile != 'NONE':
+            return os.path.dirname(logfile)
+        return variables['${OUTPUTDIR}']
+
     #
     #-------------------------------------------------------------------------------
     #
@@ -186,10 +203,17 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         # Check for a valid FilePath and make sure the directories exist
         #
         if FilePath and os.path.isabs(FilePath):
-            raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
-        fullFilePath = os.path.join(self._OutputDir, FilePath)
-        if not os.path.exists(os.path.split(fullFilePath)[0]):
-            os.makedirs(os.path.split(fullFilePath)[0])
+            fullFilePath = FilePath.replace('/', os.sep)
+            # raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
+        elif FilePath:
+            fullFilePath = os.path.join(self._OutputDir, FilePath).replace('/', os.sep)
+        else:
+            raise RuntimeError("[ERR] Args Invalid: GetActiveWindowImage FilePath'%s' " % FilePath)
+
+        prefix_dir =  os.path.split(fullFilePath)[0]
+        if not os.path.exists(prefix_dir)  and not self._root_dir_reg.match(prefix_dir):
+            self._info("[INFO][Create new dir]: " + os.path.split(fullFilePath)[0])
+            os.makedirs(prefix_dir)
         self._info("GetActiveWindowImage(FilePath=%s)" % fullFilePath)
         #
         # Get the bounding box for the Active Window
@@ -227,9 +251,16 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         # Check for a valid FilePath and make sure the directories exist
         #
         if FilePath and os.path.isabs(FilePath):
-            raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
-        fullFilePath = os.path.join(self._OutputDir, FilePath)
-        if not os.path.exists(os.path.split(fullFilePath)[0]):
+            fullFilePath = FilePath.replace('/', os.sep)
+            # raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
+        elif FilePath:
+            fullFilePath = os.path.join(self._OutputDir, FilePath).replace('/', os.sep)
+        else:
+            raise RuntimeError("[ERR] Args Invalid: GetScreenImage FilePath'%s' " % FilePath)
+
+        prefix_dir =  os.path.split(fullFilePath)[0]
+        if not os.path.exists(prefix_dir)  and not self._root_dir_reg.match(prefix_dir):
+            self._info("[INFO] Create new dir: " + os.path.split(fullFilePath)[0])
             os.makedirs(os.path.split(fullFilePath)[0])
         self._info("GetScreenImage(FilePath=%s)" % fullFilePath)
         #
