@@ -85,7 +85,6 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
         #
         # Remember our input parameters
         #
-        self._OutputDir  = self._get_log_dir()
         self._root_dir_reg = re.compile(r'^[a-zA-Z]:\\{1,2}$')
         self._TimeOut    = int(TimeOut)
         self._CaptureScreenOnError = CaptureScreenOnError
@@ -206,7 +205,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
             fullFilePath = FilePath.replace('/', os.sep)
             # raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
         elif FilePath:
-            fullFilePath = os.path.join(self._OutputDir, FilePath).replace('/', os.sep)
+            fullFilePath = os.path.join(self._get_log_dir(), FilePath).replace('/', os.sep)
         else:
             raise RuntimeError("[ERR] Args Invalid: GetActiveWindowImage FilePath'%s' " % FilePath)
 
@@ -254,7 +253,7 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
             fullFilePath = FilePath.replace('/', os.sep)
             # raise RuntimeError("Given FilePath='%s' must be relative to Robot outpudir" % FilePath)
         elif FilePath:
-            fullFilePath = os.path.join(self._OutputDir, FilePath).replace('/', os.sep)
+            fullFilePath = os.path.join(self._get_log_dir(), FilePath).replace('/', os.sep)
         else:
             raise RuntimeError("[ERR] Args Invalid: GetScreenImage FilePath'%s' " % FilePath)
 
