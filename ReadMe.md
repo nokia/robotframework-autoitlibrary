@@ -1,5 +1,6 @@
-AutoItLibrary
+AutoItLibrary 
 =============
+[![Latest Version](https://img.shields.io/pypi/v/robotframework-autoitlibrary.svg)](https://pypi.python.org/pypi/robotframework-autoitlibrary)
 
 Changelog：
 
