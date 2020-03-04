@@ -23,6 +23,7 @@ __version__ = "1.1"
 #
 # Import the libraries we need
 #
+import pythoncom
 import win32com.client                  # For COM interface to AutoIt
 import sys                              # For command line args
 import os                               # For file path manipulation
@@ -37,6 +38,12 @@ except :
 # Fix https://github.com/nokia/robotframework-autoitlibrary/issues/13
 import re                                   # To detect Windows Disk root path (c:\, d:\, ..., etc)
 from robot.libraries.BuiltIn import BuiltIn # Get RobotFramework's ${OUTPUTDIR} to store screenshot image
+
+# Initialize COM for RIDE
+pythoncom.CoInitialize()
+
+# Generate cache to ensure the AutoItX3.dll methods are available for RobotFramework
+win32com.client.gencache.EnsureModule("{F8937E53-D444-4E71-9275-35B64210CC3B}", 0, 1, 0)
 
 #
 #-------------------------------------------------------------------------------
