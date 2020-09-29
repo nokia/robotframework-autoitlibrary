@@ -288,22 +288,29 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
 
         This is required in order to do error code translation into exceptions for Robot Framework.
         """
+        #
+        # Capture the PID of the launched process and return
+        #
+        application_pid = None
         self._infoKW(self.Run, FileName, WorkingDir, Flag)
 
         if WorkingDir == "" and Flag == "" :
             cmd = "FileName='%s'" % FileName
-            self._AutoIt.Run(FileName)
+            application_pid = self._AutoIt.Run(FileName)
         elif WorkingDir != "" and Flag == "" :
             cmd = "FileName='%s', WorkingDir='%s'" % (FileName, WorkingDir)
-            self._AutoIt.Run(FileName, WorkingDir)
+            application_pid = self._AutoIt.Run(FileName, WorkingDir)
         else :
             cmd = "FileName='%s', WorkingDir='%s', Flag='%s'" % (FileName, WorkingDir, Flag)
-            self._AutoIt.Run(FileName, WorkingDir, Flag)
+            application_pid = self._AutoIt.Run(FileName, WorkingDir, Flag)
         #
         # Check the AutoIt error property
+        # If no error then return the PID of the launched application
         #
         if self._AutoIt.error == 1 :
             raise Exception("Failed to run %s" % cmd)
+        else:
+            return application_pid
     #
     #-------------------------------------------------------------------------------
     #
