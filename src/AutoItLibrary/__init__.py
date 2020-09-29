@@ -288,10 +288,10 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
 
         This is required in order to do error code translation into exceptions for Robot Framework.
         """
-         #
-         # Capture the PID of the launched process and return
-         #
-         application_pid = None
+        #
+        # Capture the PID of the launched process and return
+        #
+        application_pid = None
         self._infoKW(self.Run, FileName, WorkingDir, Flag)
 
         if WorkingDir == "" and Flag == "" :
