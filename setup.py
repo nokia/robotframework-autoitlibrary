@@ -70,7 +70,7 @@ if __name__ == "__main__":
             # Register the AutoItX COM object
             # and make its methods known to Python
             #
-            cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + instFile
+            cmd = r"%SYSTEMROOT%\system32\regsvr32.exe /S " + '\"' + instFile + '\"'
             print(cmd)
             subprocess.check_call(cmd, shell=True)
             makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
@@ -81,7 +81,7 @@ if __name__ == "__main__":
                 print("AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/.")
                 sys.exit(2)
 
-            cmd = "python %s %s" % (makepy, instFile)
+            cmd = "python \"%s\" \"%s\"" % (makepy, instFile)
             print(cmd)
             subprocess.check_call(cmd)
         else :
@@ -95,7 +95,7 @@ if __name__ == "__main__":
     # Do the distutils installation
     #
     setup(name         = "robotframework-autoitlibrary",
-          version      = "1.2.6",
+          version      = "1.2.7",
           description  = "AutoItLibrary for Robot Framework",
           author       = "Joe Hisaishi",
           author_email = "joehisaishi1943@gmail.com",
