@@ -33,9 +33,12 @@ directory on your PC, open a command window in that directory and type:
 
 This installation creates the folder:
 
-    C:\RobotFramework\Extensions\AutoItLibrary
+    RobotFramework\Extensions\AutoItLibrary
 
 on your PC and puts various files into this directory folder.
+
+When installed using pip this folder is placed in the Lib/site-packages folder of your python install.
+However, if installed from source, this folder will be placed in the C:\ drive of your machine.
 
 
 Documentation
