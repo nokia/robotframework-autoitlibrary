@@ -45,6 +45,15 @@ object and provides additional high-level keywords implemented as
 methods in this class.
 """[1:-1]
 
+def getWin32ComRomingPath():
+    for dirpath, dirs, files in os.walk(os.getenv('APPDATA')):
+        for filename in files:
+            if filename == "makepy.py" and (r'site-packages\win32com\client' in dirpath):
+                fullpath = os.path.join(dirpath, filename)
+                print("[INF] Found :", fullpath)
+                return fullpath
+    return None
+
 if __name__ == "__main__":
     #
     # Install the 3rd party packages
@@ -74,11 +83,14 @@ if __name__ == "__main__":
             print(cmd)
             subprocess.check_call(cmd, shell=True)
             makepy = os.path.normpath(os.path.join(get_python_lib(), "win32com/client/makepy.py"))
+            if not os.path.isfile(makepy):
+                print("[WRN] No win32com in get_python_lib(). Try find in %APPDATA%.")
+                makepy = getWin32ComRomingPath()
             #
             # Make sure we have win32com installed
             #
-            if not os.path.isfile(makepy) :
-                print("AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/.")
+            if makepy is None:
+                print("[ERR] AutoItLibrary requires win32com. See http://starship.python.net/crew/mhammond/win32/.")
                 sys.exit(2)
 
             cmd = "python \"%s\" \"%s\"" % (makepy, instFile)
@@ -90,12 +102,16 @@ if __name__ == "__main__":
     #
     # Figure out the install path
     #
-    destPath = os.path.normpath(os.path.join(os.getenv("HOMEDRIVE"), r"\RobotFramework\Extensions\AutoItLibrary"))
+    root_path = os.path.join(os.getenv("HOMEDRIVE"))
+    if root_path != "C:":
+        print("[INF] root path (%s) != C:" % root_path)
+        root_path = "C:"
+    destPath = os.path.normpath(os.path.join(root_path, r"\RobotFramework\Extensions\AutoItLibrary"))
     #
     # Do the distutils installation
     #
     setup(name         = "robotframework-autoitlibrary",
-          version      = "1.2.7",
+          version      = "1.2.8",
           description  = "AutoItLibrary for Robot Framework",
           author       = "Joe Hisaishi",
           author_email = "joehisaishi1943@gmail.com",
