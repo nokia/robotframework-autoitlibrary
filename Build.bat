@@ -24,7 +24,7 @@
 IF EXIST .\dist   rmdir /S /Q .\dist
 IF EXIST .\build  rmdir /S /Q .\build
 call Make.bat
-python setup.py sdist --format=zip
+python -m build --sdist
 pause
 ::
 :: -------------------------------- End of file --------------------------------

@@ -19,17 +19,11 @@
 ::
 ::-------------------------------------------------------------------------------
 ::
-:: Install the AutoItLibrary on the local PC
-::
-python setup.py install
 ::
 :: Build the updated documentation before installing again
 ::
-libdoc.py --output doc\AutoItLibrary.html AutoItLibrary
+libdoc.exe src\AutoItLibrary doc\AutoItLibrary.html
 ::
-:: Now install the AutoItLibrary on the local PC including the updated documentation
-::
-python setup.py install
 pause
 ::
 :: -------------------------------- End of file --------------------------------
