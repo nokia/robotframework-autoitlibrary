@@ -54,6 +54,9 @@ class InstallCommand(install):
         install.finalize_options(self)
 
     def run(self):
+        if os.name != "nt" :
+            print("AutoItLibrary cannot be installed on non-Windows platforms.")
+            sys.exit(2)
         RegisterAutoIT()
         install.run(self)
 
