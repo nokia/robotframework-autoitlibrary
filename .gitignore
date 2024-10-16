@@ -1,0 +1,4 @@
+build/**
+dist/**
+src/robotframework_autoitlibrary.egg-info/**
+**/__pycache__/**

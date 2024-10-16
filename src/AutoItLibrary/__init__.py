@@ -60,13 +60,13 @@ class AutoItLibrary(Logger.Logger, Counter.Counter) :
     documentation for these keywords is available in the AutoItX documentation file:
     *AutoItX.chm*.  This file is installed as part of the installation of *AutoItLibrary* as:
 
-        C:\RobotFramework\Extensions\AutoItLibrary\AutoItX.chm
+        C:\\RobotFramework\\Extensions\\AutoItLibrary\\AutoItX.chm
 
     In order to discover the control identifiers in a given Windows GUI, AutoIt provides a standalone
     tool called the AutoIt Window Info Tool which is installed as part of the installation of
     *AutoItLibrary* as:
 
-        C:\RobotFramework\Extensions\AutoItLibrary\Au3Info.exe
+        C:\\RobotFramework\\Extensions\\AutoItLibrary\\Au3Info.exe
 
     This tool is documented here: http://www.autoitscript.com/autoit3/docs/intro/au3spy.htm
     """
