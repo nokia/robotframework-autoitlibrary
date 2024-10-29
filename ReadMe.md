@@ -2,9 +2,10 @@ AutoItLibrary
 =============
 [![Latest Version](https://img.shields.io/pypi/v/robotframework-autoitlibrary.svg)](https://pypi.python.org/pypi/robotframework-autoitlibrary)
 
-Changelog：
-  2020/09/28 Return PID of the launched application using "Run" keyword
-  2018/06/29 Added Python 3 support
+Changelog： 
+  2024/10/16 Fix AutoItX3.dll register issue.   
+  2020/09/28 Return PID of the launched application using "Run" keyword.      
+  2018/06/29 Added Python 3 support.     
 
 Introduction
 ------------
